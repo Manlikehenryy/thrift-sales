@@ -742,8 +742,8 @@ hr{
             checkout.classList.add('checkout-fixed')
           }
        }
-
-     if (document.documentElement.scrollTop>=bottom2-bottom){
+     else{
+        if (document.documentElement.scrollTop>=bottom2-bottom){
     summary.classList.remove('fixed');
      summary.classList.add('abs');
     }
@@ -751,8 +751,9 @@ hr{
      summary.classList.remove('abs');
      summary.classList.add('fixed');
      }
+     }
     }
-    window.onscroll = function () {
+    window.onscroll = function (){
   scroll();
 };
 
