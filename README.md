@@ -1,7 +1,8 @@
 An application where customers come to purchase products, pay via checkout api, choose where they want their items to be delivered to. 
 Then as an Admin you upload the products the customers see, view orders, monitor delivery of products.
 
-
+built with PHP/Laravel
+Run composer update in the terminal
 
 
 <!-- <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
