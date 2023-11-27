@@ -23,7 +23,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\CitiesImport;
 use App\Models\Address;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +35,20 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+// $response = curl_exec($curl);
+
+
+// curl_close($curl);
+
+//  $json = json_decode($response);
+//  header('Content-type: application/pdf');
+//  echo $json;
+// //  Storage::putFile('pdf', $json);
+// });
+
+
 Route::get('/test',function()
 {
     $links = session()->has('links') ? session('links') : [];
@@ -65,15 +79,16 @@ Route::get('/test',function()
 Route::get('/email',function(){
     $data = [
         'title' => 'E-commerce',
-         'content' => 'Item has been purchased, you have $100 in your account'
+         'content' => 'Item has been purchased, you have $100 in your account  '.time()
     ];
-
+     $curl = new CURLFile();
     Mail::send('email', $data, function ($message) {
         // $message->from('no-reply@ecommerce.com', 'Ecommerce');
         $message->to('mbamaluhenry8@gmail.com', 'John Doe');
         // $message->cc('john@johndoe.com', 'John Doe');
         // $message->bcc('john@johndoe.com', 'John Doe');
         // $message->replyTo('john@johndoe.com', 'John Doe');
+
         $message->subject('NOTICE');
         $message->priority(1);
         // $message->attach('images/bin.png');
@@ -204,6 +219,7 @@ Route::get('/browse/categories/{cat}',function ($cat)
 });
 
 Route::get('/', function () {
+    return 'ecommerce';
     $links = session()->has('links') ? session('links') : [];
     $currentLink = request()->path(); // Getting current URI like 'category/books/'
     array_unshift($links, $currentLink); // Putting it in the beginning of links array
